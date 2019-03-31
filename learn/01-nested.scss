@@ -1,0 +1,25 @@
+
+
+.box {
+    width: 20px + 8in;
+  }
+
+  $width: 960px;
+
+.col {
+   width: $width /10;
+}
+
+$col-width: 60px;
+$col-gap: 20px;
+//列宽 ＝ 单列宽度 x 列数 + 列间距  x (列数 - 1) 
+// $col-width * $i + $col-gap * ($i - 1)
+
+@for $i from 1 through 12 {
+    .col-#{$i}{
+        width: $col-width * $i + $col-gap * ($i - 1);
+    }
+}
+
+
+

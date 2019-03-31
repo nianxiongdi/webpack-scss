@@ -1,0 +1,57 @@
+$btn-prefix: 'btn-prefix';
+$color-white: 'color-white';
+$css-prefix: 'css-prefix';
+$btn-icon-prefix: 'btn-icon-prefix';
+$icon-size: 5px;
+
+
+@mixin icon-size($icon-size, $icon-margin,$content){
+
+}
+
+
+@mixin next-button-size-rtl(
+    $padding,
+    $icon-margin,
+    $icon-size,
+    $corner
+) {
+    $btn-prefix: 'btn-prefix';
+    $color-white: 'color-white';
+    $css-prefix: 'css-prefix';
+    bodrer-radius: $corner;
+    & > #{$btn-prefix}-icon#{$btn-icon-prefix}-first {
+        @include icon-size($icon-size, $icon-margin, 0);
+    }
+  
+
+    &#{$btn-prefix}-loading {
+        padding-left: $padding;
+        padding-right: $padding + $icon-size + $icon-margin;
+
+        &:after {
+            right: $padding;
+            top: 50%;
+            margin-right: 0;
+            margin-left: $icon-margin; 
+        }
+    }
+}
+ 
+button {
+   @include next-button-size-rtl('1px','2px','3px','4px')
+}
+
+
+button {
+    bodrer-radius: "4px"; }
+    
+    buttonbtn-prefix-loading {
+      padding-left: "1px";
+      padding-right: "1px3px2px"; }
+  
+      buttonbtn-prefix-loading:after {
+        right: "1px";
+        top: 50%;
+        margin-right: 0;
+        margin-left: "2px"; }
