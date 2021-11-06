@@ -6,6 +6,8 @@ const path = require('path')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { ESBuildMinifyPlugin } = require('esbuild-loader')
+const esbuild = require('esbuild')
 
 
 module.exports = {
@@ -33,7 +35,13 @@ module.exports = {
             filename: 'main.css'
         })    
     ],
-
+    // optimization: {
+    //     minimizer: [
+    //         new ESBuildMinifyPlugin({
+    //             target: 'es2015'  // Syntax to compile to (see options below for possible values)
+    //         })
+    //     ]
+    // },
     module: { //配置模块
         //loader
         rules:[{ //规则  css-loader
@@ -50,10 +58,33 @@ module.exports = {
                     loader: 'css-loader'
                 }, {
                     loader: 'sass-loader'
-                }]
-            }
-
-
+                },
+            ]
+            },
+            // {
+            //     test: /\.js$/,
+            //     loader: 'esbuild-loader',
+            //     options: {
+            //         loader: 'jsx',  // Remove this if you're not using JSX
+            //         target: 'es2015',  // Syntax to compile to (see options below for possible values)
+            //         // css: true,
+            //         implementation: esbuild
+            //     }
+            // },
+            {
+                test: /\.m?js|jsx$/,
+                exclude: /node_modules/,
+                use: {
+                  loader: 'babel-loader',
+                  options: {
+                    presets: [
+                      ['@babel/preset-env', { targets: "defaults" }],
+                      ['@babel/preset-react']
+                    ]
+                    // plugins: ['@babel/plugin-transform-runtime']
+                  }
+                }
+            }          
         ]
     }
 }
