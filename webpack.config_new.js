@@ -82,7 +82,7 @@ module.exports = {
                     loader: 'jsx',  // Remove this if you're not using JSX
                     target: 'es2015',  // Syntax to compile to (see options below for possible values)
                     // css: true,
-                    implementation: esbuild
+                    // implementation: esbuild
                 }
             }      
         ]

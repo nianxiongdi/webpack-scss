@@ -7,8 +7,6 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { ESBuildMinifyPlugin } = require('esbuild-loader')
-const esbuild = require('esbuild')
-
 
 module.exports = {
     mode:'development', //模式
